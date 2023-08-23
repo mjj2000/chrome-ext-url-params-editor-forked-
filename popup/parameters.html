@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="parameters.css" />
+    <script src="parameters.js" type="module" async></script>
+  </head>
+  <body>
+    <!-- <h1></h1> -->
+    <form>
+      <section class="params"></section>
+      <input type="submit" />
+    </form>
+
+    <template id="responsive-input-template">
+      <style>
+        :host{
+            display:inline-grid;
+            grid-template-columns: minmax(0,1fr);
+            background-color:var(--background);
+            --default-width:12em;
+            --background:rgba(0,0,0,0.1);
+            --border:2px solid rgba(0,0,0,0.5);
+            --focus-background:rgba(255,255,255,1);
+            --focus-color:unset;
+            --focus-border-color:unset;
+        }
+        div{
+            grid-column: 1/2;
+            grid-row:1/2;
+            overflow:hidden;
+            visibility:hidden;
+            width:0;
+            height:0;
+        }
+        span{
+            display:block;
+            white-space:pre;
+            width:max-content;
+        }
+        /* span:empty{ */
+        /*     width:var(--default-width); */
+        /* } */
+        input{
+            grid-column: 1/2;
+            grid-row:1/2;
+            width:var(--default-width);
+            min-width:100%;
+            max-width: 100%;
+            font-size:inherit;
+            font-family:inherit;
+            color:inherit;
+            transition: width 0.1s linear, background 0.2s;
+            background-color: transparent;
+        }
+        input:focus{
+            background:var(--focus-background);
+            color:var(--focus-color);
+            border-color:var(--focus-border-color);
+        }
+        span,input{
+            box-sizing:border-box;
+            padding:0.4em 0.5em;
+            border:var(--border);
+        }
+      </style>
+      <div><span></span></div>
+      <input name="key" type="text"/>
+    </template>
+
+    <template id="param-input-template">
+      <style>
+        :host{
+            display:grid;
+            /* grid-template-columns: 1fr max-content 1fr max-content; */
+            grid-template-columns: minmax(2em,max-content) max-content minmax(2em,1fr) max-content;
+            gap:0.2em;
+            align-items:center;
+        }
+        /* :host([has-field]){ */
+        /*     grid-template-columns: minmax(0,max-content) max-content minmax(0,1fr) max-content; */
+        /* } */
+        /* :host(:not([has-field])[has-value]){ */
+        /*     grid-template-columns: minmax(0,1fr) max-content minmax(0,max-content) max-content; */
+        /* } */
+        responsive-input{
+            --default-width:8em;
+            --background:var(--input-background);
+            --focus-background:var(--input-focus-background);
+            --border:none;
+        }
+        svg{
+            display:block;
+            height:1em;
+            width:1em;
+        }
+        button{
+            display:flex;
+            align-items: center;
+            font-size:inherit;
+            color:inherit;
+            justify-self:end;
+            padding:0.5em;
+            border:0;
+            background:transparent;
+            align-self: stretch;
+        }
+        button:hover{
+            background:red;
+            color:white;
+        }
+      </style>
+      <responsive-input name="field"></responsive-input>
+      <svg viewBox="0 0 100 100">
+        <rect x="0" y="0" width="100" height="100" fill="none"/>
+        <line x1="20" y1="35" x2="80" y2="35" stroke-width="10" stroke="currentColor"/>
+        <line x1="20" y1="65" x2="80" y2="65" stroke-width="10" stroke="currentColor"/>
+      </svg>
+      <responsive-input name="value"></responsive-input>
+      <button name="close">
+        <svg viewBox="0 0 100 100">
+          <rect x="0" y="0" width="100" height="100" fill="none"/>
+          <line x1="20" y1="20" x2="80" y2="80" stroke-width="10" stroke="currentColor"/>
+          <line x1="80" y1="20" x2="20" y2="80" stroke-width="10" stroke="currentColor"/>
+        </svg>
+      </button>
+    </template>
+  </body>
+</html>
