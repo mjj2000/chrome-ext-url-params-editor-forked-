@@ -4,6 +4,10 @@ html{
 body{
     font-size:unset;
     margin:0;
+    min-width: 500px;
+}
+form{
+    width:max-content;
 }
 input[type=submit]{
     display:block;
