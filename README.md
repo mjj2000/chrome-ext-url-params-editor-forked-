@@ -1,3 +1,3 @@
 # chrome-ext-url-params-editor-forked-
-chrome extension url-params-editor with patch
+this repo clones chrome extension url-params-editor with patch fix
 https://chrome.google.com/webstore/detail/url-params-editor/kgnbnbifdjcokgodkgjliaegpollgafa
